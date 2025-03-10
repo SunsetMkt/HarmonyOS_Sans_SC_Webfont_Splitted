@@ -98,16 +98,30 @@ for (const dirName in fontWeightMap) {
 
 // Merge ./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/*.css
 // to ./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/Merged.css
-var merged = "";
+var merged = `@charset "UTF-8";\n\n`;
 for (const dirName in fontWeightMap) {
+    merged += `/* ${dirName}.css */\n`;
     merged += fs.readFileSync(
         `./HarmonyOS_Sans_SC_Webfont_Splitted/${dirName}/${dirName}.css`,
         "utf8"
     );
-    merged += "\n";
+    merged += "\n\n";
 }
+
+// Ref: https://github.com/IKKI2000/harmonyos-fonts/blob/main/css/harmonyos_sans_sc.css
+merged += `/* Language */
+:lang(Hans),
+:lang(zh),
+:lang(CHS),
+:lang(zh-CN),
+:lang(zh-SG),
+:lang(Jpan),
+:lang(ja) {
+    font-family: 'HarmonyOS Sans SC', sans-serif;
+}`;
+
 fs.writeFileSync(
-    "./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/Merged.css",
+    "./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/index.css",
     merged
 );
 
