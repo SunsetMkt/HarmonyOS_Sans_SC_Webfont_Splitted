@@ -16,10 +16,11 @@ async function split(input, outDir) {
 
 // For every .ttf in HarmonyOS_Sans_SC folder
 for (const file of fs.readdirSync("./HarmonyOS_Sans_SC")) {
+    var dirName = file.split(".")[0].split("HarmonyOS_SansSC_")[1];
     if (file.endsWith(".ttf")) {
-        split(
+        await split(
             `./HarmonyOS_Sans_SC/${file}`,
-            `./HarmonyOS_Sans_SC_Webfont_Splitted/${file}`
+            `./HarmonyOS_Sans_SC_Webfont_Splitted/${dirName}`
         );
     }
 }
