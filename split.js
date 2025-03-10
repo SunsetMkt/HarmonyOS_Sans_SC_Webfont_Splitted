@@ -1,10 +1,26 @@
 import fs from "fs";
 import { fontSplit } from "cn-font-split";
 
+// Ref: https://github.com/IKKI2000/harmonyos-fonts/blob/main/css/harmonyos_sans_sc.css
+var fontWeightMap = {
+    Thin: 100,
+    Light: 300,
+    Regular: 400,
+    Medium: 500,
+    Bold: 700,
+    Black: 900,
+};
+
 async function split(input, outDir, weight) {
     const inputBuffer = new Uint8Array(fs.readFileSync(input).buffer);
 
     console.log(`Splitting ${input}...`);
+
+    var weight_num = fontWeightMap[weight];
+    if (!weight_num) {
+        console.error(`Unknown weight: ${weight}`);
+        return;
+    }
 
     console.time("node");
     await fontSplit({
@@ -13,8 +29,8 @@ async function split(input, outDir, weight) {
         css: {
             // CSS 输出产物配置，一般而言不需要手动配置
             fontFamily: "HarmonyOS Sans SC", // 输出 css 产物的 font-family 名称
-            //  fontWeight: '400',           // 字重: 400 (常规)、700(粗体), 详细可见 https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
-            //  fontStyle: 'normal',         // 字体样式: normal (常规)、italic (斜体)。可见 https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-style
+            fontWeight: toString(weight_num), // 字重: 400 (常规)、700(粗体), 详细可见 https://developer.mozilla.org/en-US/docs/Web/CSS/font-weight
+            fontStyle: "normal", // 字体样式: normal (常规)、italic (斜体)。可见 https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-style
             fontDisplay: "swap", // 字体显示策略，推荐 swap。可见 https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
             //  localFamily: ['Test Sans'],  // 本地字体族名称。可见 https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face
             // commentUnicodes: false, // 在 CSS 中添加 Unicode 码点注释
