@@ -10,5 +10,5 @@ HarmonyOS Sans SC Webfont Splitted by [KonghaYao/cn-font-split](https://github.c
 
 ```sh
 pnpm i cn-font-split
-node split.js
+node main.js
 ```
