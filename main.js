@@ -46,8 +46,8 @@ async function split(input, outDir, weight) {
         // chunkSizeTolerance: 1 * 1024, // 分片容差，一般不需要修改
         // maxAllowSubsetsCount: 60, // 最大允许分包数量，可能会和 chunkSize 冲突
 
-        testHtml: false, // 是否生成测试 HTML 文件
-        reporter: false, // 是否生成 reporter.bin 文件
+        // testHtml: true, // 是否生成测试 HTML 文件
+        // reporter: true, // 是否生成 reporter.bin 文件
 
         // 自定义分包输出的文件名为 6 位短哈希，或者使用自增索引: '[index].[ext]'
         renameOutputFont: `${weight}_[hash:6][ext]`,
