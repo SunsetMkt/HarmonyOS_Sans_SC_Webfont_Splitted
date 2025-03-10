@@ -34,15 +34,15 @@ async function split(input, outDir, weight) {
             fontDisplay: "swap", // 字体显示策略，推荐 swap。可见 https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display
             localFamily: [`HarmonyOS Sans SC ${weight}`], // 本地字体族名称。可见 https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face
             // commentUnicodes: false, // 在 CSS 中添加 Unicode 码点注释
-            // compress: true               // 压缩生成的 CSS 产物
+            compress: false, // 压缩生成的 CSS 产物
         },
 
-        // languageAreas: false, // 是否启用语言区域优化，将同一语言的字符分到一起
-        // autoSubset: true,           // 当分包超过指定大小时是否自动拆分
-        // fontFeature: true,          // 是否保留字体特性（如 Code 字体的连字、字距调整等）
-        // reduceMins: true,           // 是否减少碎片分包，合并小分包以减少请求数，一般不需要修改
-        // testHtml: true, // 是否生成测试 HTML 文件
-        // reporter: true, // 是否生成 reporter.bin 文件
+        languageAreas: true, // 是否启用语言区域优化，将同一语言的字符分到一起
+        autoSubset: true, // 当分包超过指定大小时是否自动拆分
+        fontFeature: true, // 是否保留字体特性（如 Code 字体的连字、字距调整等）
+        reduceMins: true, // 是否减少碎片分包，合并小分包以减少请求数，一般不需要修改
+        testHtml: true, // 是否生成测试 HTML 文件
+        reporter: true, // 是否生成 reporter.bin 文件
         // 自定义分包输出的文件名为 6 位短哈希，或者使用自增索引: '[index].[ext]'
         renameOutputFont: `${weight}_[hash:6].[ext]`,
     });
