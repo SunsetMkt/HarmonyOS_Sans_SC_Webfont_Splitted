@@ -66,3 +66,49 @@ for (const file of fs.readdirSync("./HarmonyOS_Sans_SC")) {
         );
     }
 }
+
+// Make Merged Font
+// Mkdir ./HarmonyOS_Sans_SC_Webfont_Splitted/Merged
+fs.mkdirSync("./HarmonyOS_Sans_SC_Webfont_Splitted/Merged");
+
+// Copy ./HarmonyOS_Sans_SC_Webfont_Splitted/[dirName]/*.woff2
+// to ./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/
+for (const dirName in fontWeightMap) {
+    // List all files in ./HarmonyOS_Sans_SC_Webfont_Splitted/[dirName]
+    for (const file of fs.readdirSync(
+        `./HarmonyOS_Sans_SC_Webfont_Splitted/${dirName}`
+    )) {
+        if (file.endsWith(".woff2")) {
+            fs.copyFileSync(
+                `./HarmonyOS_Sans_SC_Webfont_Splitted/${dirName}/${file}`,
+                `./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/${file}`
+            );
+        }
+    }
+}
+
+// Copy ./HarmonyOS_Sans_SC_Webfont_Splitted/[dirName]/[dirName].css
+// to ./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/[dirName].css
+for (const dirName in fontWeightMap) {
+    fs.copyFileSync(
+        `./HarmonyOS_Sans_SC_Webfont_Splitted/${dirName}/${dirName}.css`,
+        `./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/${dirName}.css`
+    );
+}
+
+// Merge ./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/*.css
+// to ./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/Merged.css
+var merged = "";
+for (const dirName in fontWeightMap) {
+    merged += fs.readFileSync(
+        `./HarmonyOS_Sans_SC_Webfont_Splitted/${dirName}/${dirName}.css`,
+        "utf8"
+    );
+    merged += "\n";
+}
+fs.writeFileSync(
+    "./HarmonyOS_Sans_SC_Webfont_Splitted/Merged/Merged.css",
+    merged
+);
+
+console.log("Done!");
