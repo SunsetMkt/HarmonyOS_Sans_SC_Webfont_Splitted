@@ -139,4 +139,9 @@ fs.writeFileSync(
     merged
 );
 
+// Copy ./HarmonyOS_Sans_SC_Webfont_Splitted/Merged to ./dist recursively
+fs.cpSync("./HarmonyOS_Sans_SC_Webfont_Splitted/Merged", "./dist", {
+    recursive: true,
+});
+
 console.log("Done!");
