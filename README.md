@@ -12,3 +12,9 @@ HarmonyOS Sans SC Webfont Splitted by [KonghaYao/cn-font-split](https://github.c
 pnpm i cn-font-split@6
 node main.js
 ```
+
+## Thanks to
+
+-   [Huawei Device Co., Ltd.](https://www.huawei.com/)
+-   [IKKI2000/harmonyos-fonts](https://github.com/IKKI2000/harmonyos-fonts)
+-   [KonghaYao/cn-font-split](https://github.com/KonghaYao/cn-font-split)
