@@ -21,3 +21,7 @@ pnpm build
 -   [Huawei Device Co., Ltd.](https://www.huawei.com/)
 -   [IKKI2000/harmonyos-fonts](https://github.com/IKKI2000/harmonyos-fonts)
 -   [KonghaYao/cn-font-split](https://github.com/KonghaYao/cn-font-split)
+
+## Disclaimer
+
+This project is not affiliated with Huawei Device Co., Ltd. HarmonyOS Sans Fonts Software is licensed under HarmonyOS Sans Fonts License Agreement.
