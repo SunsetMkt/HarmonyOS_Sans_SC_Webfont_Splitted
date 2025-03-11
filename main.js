@@ -55,6 +55,14 @@ async function split(input, outDir, weight) {
     console.timeEnd("node");
 }
 
+// If HarmonyOS_Sans_SC_Webfont_Splitted already exists, raise error
+if (fs.existsSync("./HarmonyOS_Sans_SC_Webfont_Splitted")) {
+    console.error(
+        "HarmonyOS_Sans_SC_Webfont_Splitted/ already exists, delete it first."
+    );
+    process.exit(1);
+}
+
 // For every .ttf in HarmonyOS_Sans_SC folder
 for (const file of fs.readdirSync("./HarmonyOS_Sans_SC")) {
     var dirName = file.split(".")[0].split("HarmonyOS_SansSC_")[1];
