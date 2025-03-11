@@ -1,5 +1,7 @@
 # HarmonyOS_Sans_SC_Webfont_Splitted
 
+![NPM Version](https://img.shields.io/npm/v/harmonyos-sans-sc-webfont-splitted)
+
 HarmonyOS Sans SC Webfont Splitted by [KonghaYao/cn-font-split](https://github.com/KonghaYao/cn-font-split/tree/release/packages/ffi-js).
 
 ## Get Fonts
